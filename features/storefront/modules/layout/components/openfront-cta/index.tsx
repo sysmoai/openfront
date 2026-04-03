@@ -1,11 +1,4 @@
-import { Space_Grotesk } from "next/font/google"
 import { cn } from "@/lib/utils"
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
 
 const OpenfrontCTA = () => {
   return (
@@ -18,10 +11,8 @@ const OpenfrontCTA = () => {
       >
         <span className="text-muted-foreground font-medium text-[0.625rem] uppercase">Powered By</span>
         <span className="flex items-center gap-1">
-        <span className="w-2.5 h-2.5 bg-[#3b82f6] rounded-full"/>
-        <span className={cn(spaceGrotesk.className, "text-sm font-semibold tracking-tight text-zinc-700 mb-0.5")}>
-          open<span className="font-normal">front</span>
-        </span>
+          <span className="w-2.5 h-2.5 bg-[#3b82f6] rounded-full" />
+          <span className={cn("text-sm font-semibold tracking-tight text-zinc-700 mb-0.5")}>open<span className="font-normal">front</span></span>
         </span>
       </a>
     </div>

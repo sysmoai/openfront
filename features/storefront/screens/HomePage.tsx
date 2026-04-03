@@ -23,16 +23,12 @@ export async function HomePage(props: {
 
   const { countryCode } = params
 
-  const region: StoreRegion | undefined = await getRegion(countryCode)
+  const region: StoreRegion | null = await getRegion(countryCode)
   const store = await getStore()
 
   const { collections }: { collections: StoreCollection[] } = region
     ? await getCollectionsListByRegion(0, 3, region.id)
     : { collections: [] }
-
-  if (!collections || !region) {
-    return null
-  }
 
   return (
     <>
@@ -41,11 +37,13 @@ export async function HomePage(props: {
         description={store?.homepageDescription}
         logoColor={store?.logoColor}
       />
-      <div className="py-12">
-        <ul className="flex flex-col gap-x-6">
-          <FeaturedProducts collections={collections} region={region} />
-        </ul>
-      </div>
+      {region && collections.length > 0 && (
+        <div className="py-12">
+          <ul className="flex flex-col gap-x-6">
+            <FeaturedProducts collections={collections} region={region} />
+          </ul>
+        </div>
+      )}
     </>
   )
 }

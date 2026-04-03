@@ -4,6 +4,7 @@ import OpenfrontCTA from "@/features/storefront/modules/layout/components/openfr
 import { Metadata } from "next"
 import InteractiveLink from "@/features/storefront/modules/common/components/interactive-link"
 import StorefrontServer from "./StorefrontServer"
+import WhatsAppFloat from "@/components/ui/whatsapp-float"
 
 export async function MainLayout({ children }: { children: React.ReactNode }) {
   const hideBranding = process.env.HIDE_OPENFRONT_BRANDING === 'true'
@@ -18,6 +19,7 @@ export async function MainLayout({ children }: { children: React.ReactNode }) {
       <Nav />
       {children}
       <Footer />
+      <WhatsAppFloat />
       {!hideBranding && <OpenfrontCTA />}
     </StorefrontServer>
   )

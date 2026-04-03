@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+:root {
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'Courier New', monospace;
+  --sysmoai-primary: #0057FF;
+  --sysmoai-primary-dark: #0041CC;
+  --sysmoai-dark: #0A0A0F;
+  --sysmoai-surface: #111118;
+  --sysmoai-text: #E8E8F0;
+  --sysmoai-muted: #8888AA;
+  --sysmoai-border: #1E1E2E;
+  --sysmoai-whatsapp: #25D366;
+}
+
 @theme inline {
   --color-background: oklch(100% 0 0);
   --color-foreground: oklch(9.65% 0 0);
@@ -21,6 +34,15 @@
   --color-input: oklch(89.84% 0 0);
   --color-ring: oklch(9.65% 0 0);
 
+  --color-sysmoai-primary: var(--sysmoai-primary);
+  --color-sysmoai-primary-dark: var(--sysmoai-primary-dark);
+  --color-sysmoai-dark: var(--sysmoai-dark);
+  --color-sysmoai-surface: var(--sysmoai-surface);
+  --color-sysmoai-text: var(--sysmoai-text);
+  --color-sysmoai-muted: var(--sysmoai-muted);
+  --color-sysmoai-border: var(--sysmoai-border);
+  --color-sysmoai-whatsapp: var(--sysmoai-whatsapp);
+
   --radius-lg: 0.5rem;
   --radius-md: calc(var(--radius-lg) - 2px);
   --radius-sm: calc(var(--radius-lg) - 4px);
@@ -36,5 +58,11 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
   }
 }

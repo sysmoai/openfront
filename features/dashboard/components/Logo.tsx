@@ -1,12 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Space_Grotesk } from "next/font/google";
 import { LogoIcon } from "./LogoIcon";
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
 
 interface LogoProps {
   className?: string;
@@ -20,7 +13,7 @@ export const Logo = ({
   iconClassName,
 }: LogoProps) => {
   return (
-    <div className={cn(spaceGrotesk.className, className)}>
+    <div className={cn(className)}>
       <div className="flex items-center gap-2 text-zinc-700 dark:text-white">
         <LogoIcon className={cn("size-5", iconClassName)} suffix="-full" />
         <h1

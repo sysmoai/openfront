@@ -50,15 +50,22 @@ export const getCollectionsList = cache(async function (offset = 0, limit = 3) {
     }
   `;
 
-  const data = await openfrontClient.request(GET_COLLECTIONS_LIST_QUERY, {
-    offset,
-    limit,
-  });
+  try {
+    const data = await openfrontClient.request(GET_COLLECTIONS_LIST_QUERY, {
+      offset,
+      limit,
+    });
 
-  return {
-    collections: data.productCollections,
-    count: data.productCollectionsCount,
-  };
+    return {
+      collections: data.productCollections,
+      count: data.productCollectionsCount,
+    };
+  } catch {
+    return {
+      collections: [],
+      count: 0,
+    };
+  }
 });
 
 export const getCollectionByHandle = cache(async function (handle: string) {
@@ -125,14 +132,21 @@ export const getCollectionsListByRegion = cache(async function (
     }
   `;
 
-  const data = await openfrontClient.request(GET_COLLECTIONS_LIST_QUERY, {
-    offset,
-    limit,
-    regionId,
-  });
+  try {
+    const data = await openfrontClient.request(GET_COLLECTIONS_LIST_QUERY, {
+      offset,
+      limit,
+      regionId,
+    });
 
-  return {
-    collections: data.productCollections,
-    count: data.productCollectionsCount,
-  };
+    return {
+      collections: data.productCollections,
+      count: data.productCollectionsCount,
+    };
+  } catch {
+    return {
+      collections: [],
+      count: 0,
+    };
+  }
 });

@@ -21,7 +21,11 @@ export const listRegions = cache(async function () {
     }
   `;
 
-  return openfrontClient.request(LIST_REGIONS_QUERY);
+  try {
+    return await openfrontClient.request(LIST_REGIONS_QUERY);
+  } catch {
+    return { regions: [] };
+  }
 });
 
 export const getRegion = cache(async function (countryCode: string) {
@@ -42,8 +46,12 @@ export const getRegion = cache(async function (countryCode: string) {
     }
   `;
 
-  const data = await openfrontClient.request(GET_REGION_QUERY, {
-    code: countryCode
-  });
-  return data.regions[0];
+  try {
+    const data = await openfrontClient.request(GET_REGION_QUERY, {
+      code: countryCode
+    });
+    return data.regions[0] ?? null;
+  } catch {
+    return null;
+  }
 });

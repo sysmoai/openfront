@@ -12,6 +12,13 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
+  webpack: (config) => {
+    config.resolve = config.resolve || {};
+    config.resolve.alias = config.resolve.alias || {};
+    config.resolve.alias['next/font/google/target.css'] = require.resolve('./styles/font-shim.css');
+    return config;
+  },
   images: {
     remotePatterns: [
       {
